@@ -5,7 +5,6 @@
 <p align="center">
     <img src="https://travis-ci.org/tutyamxx/memerizer.svg?branch=master">
 </p>
-
 <br />
 
 # Memerizer
@@ -16,6 +15,7 @@
 * It has **23** unique endpoints for dank image manipulations 🤘🏽🤪🤘🏽
 * Heavily relies on [Jimp](https://github.com/oliver-moran/jimp) and [GraphicsMagick](https://github.com/aheckmann/gm)
 * Currently supported response formats are: `Buffer` and `Base64`
+* Originally, my discord bot used to have these commands, but I thought to transform them into an API, this way other people can easily generate memes with it.
 
 # How to use
 
