@@ -2,6 +2,10 @@
   <img src="https://i.imgur.com/HiaDkDQ.png"><br/>
 </p>
 
+<p align="center">
+    <img src="https://travis-ci.org/tutyamxx/memerizer.svg?branch=master">
+</p>
+
 <br />
 
 # Memerizer
