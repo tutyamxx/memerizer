@@ -3,8 +3,9 @@
 </p>
 
 <p align="center">
-    <img src="https://travis-ci.org/tutyamxx/memerizer.svg?branch=master">
+    <a href="https://travis-ci.org/tutyamxx/memerizer"><img src="https://travis-ci.org/tutyamxx/memerizer.svg?branch=master"></a>
 </p>
+
 <br />
 
 # Memerizer
