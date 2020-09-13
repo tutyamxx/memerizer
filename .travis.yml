@@ -3,7 +3,7 @@ os:
   - osx
 language: node_js
 node_js:
-  - 12
+  - lts/*
 cache:
   npm: false
 before_install:
@@ -14,12 +14,3 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install imagemagick; fi
 install: npm ci
-jobs:
-  include:
-    - stage: "Testing on Linux"
-      os: linux
-      script: npm test
-
-    - stage: "Testing on OS X"
-      os: osx
-      script: npm test
