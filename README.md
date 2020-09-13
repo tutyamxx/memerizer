@@ -15,7 +15,7 @@
 
 # Travis CI build info
 
-* Currently is building only on Windows and Linux operating systems (it works fine on my OS X machine), because OS X takes a long time to update brew on Travis CI.
+* Currently is building only on Windows and Linux operating systems (it works fine on my OS X machine) but because OS X takes a long time to update brew on Travis CI, I removed it from testing builds.
 
 # How to use
 
