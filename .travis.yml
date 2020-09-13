@@ -9,7 +9,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:rwky/graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev libmagic-dev -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y; fi
 install: npm ci
 jobs:
   include:
