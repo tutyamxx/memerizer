@@ -19,10 +19,11 @@
 
 # How to use
 
-* I have to create a documentation, proably on gitbooks soon
+* Still a work in progress, but docs will be on [Official Documentation](https://tutyamxx.gitbook.io/memerizer-api-documentation/)
 
 # How to run it locally
 
+* First, install [GraphicsMagick](http://www.graphicsmagick.org/download.html) and [ImageMagick](https://imagemagick.org/script/download.php) on your Operating System
 * Clone this repo
 * Open the containing folder
 * Type `npm i && npm start`
