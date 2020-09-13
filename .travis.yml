@@ -6,7 +6,6 @@ language: node_js
 node_js:
   - lts/*
   - 12
-  - 10
 cache:
   npm: false
 before_install:
@@ -17,9 +16,6 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install graphicsmagick; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install imagemagick.app; fi
-addons:
-  apt:
-    update: true
 install: npm ci
 jobs:
   include:
