@@ -1,18 +1,15 @@
 os:
-  - linux
+  - osx
 language: node_js
 node_js:
   - 12
 cache:
   npm: false
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:rwky/graphicsmagick -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev libmagic-dev -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
 install: npm ci
 jobs:
   include:
-    - stage: "Testing on Linux"
-      os: linux
+    - stage: "Testing on OS X"
+      os: osx
       script: npm test
