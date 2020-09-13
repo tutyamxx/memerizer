@@ -11,6 +11,6 @@ before_install:
 install: npm ci
 jobs:
   include:
-    - stage: "Unit Testing on Windows"
+    - stage: "Testing on Windows"
       os: windows
       script: npm test
