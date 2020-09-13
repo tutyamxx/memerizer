@@ -17,7 +17,7 @@
 * Heavily relies on [Jimp](https://github.com/oliver-moran/jimp) and [GraphicsMagick](https://github.com/aheckmann/gm)
 * Currently supported response formats are: `Buffer` and `Base64`
 
-# Usage
+# How to use
 
 * I have to create a documentation
 
