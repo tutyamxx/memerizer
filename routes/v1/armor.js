@@ -40,10 +40,10 @@ router.get("/armor", (req, res, next) =>
     {
         if(err)
         {
-            res.status(422).send({ status: 422, message: "There was an error creating the meme `Nothing gets through this armor` g ⚠️" });
+            return res.status(422).send({ status: 422, message: "There was an error creating the meme `Nothing gets through this armor` g ⚠️" });
         }
 
-        ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
+        return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
     });
 });
 

@@ -44,7 +44,7 @@ router.post("/draw", async (req, res, next) =>
                     return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` g ⚠️" });
                 }
 
-                ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
+                return ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
             });
         });
     }

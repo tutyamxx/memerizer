@@ -30,7 +30,7 @@ router.get("/qr", (req, res, next) =>
                 return res.status(422).send({ status: 422, message: "There was an error creating the meme 'QR Generator' ⚠️" });
             }
 
-            ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
+            return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
         });
     });
 });
