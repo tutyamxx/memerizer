@@ -59,7 +59,7 @@ router.post("/byemom", (req, res, next) =>
                 }
 
                 gm(buffer)
-                .font("Helvetica.ttf", 20)
+                .font(join(__dirname, "../../public/fonts/Helvetica.ttf", 20)
                 .fill("#111111")
                 .draw(["rotate -25 text 70, 703 '" + decodeURI(szSearchQuery.replace(/'/g, "`").replace(/\"/g, "").trim()) + "'"])
                 .toBuffer("byemom.png", (err, buffer2) =>
