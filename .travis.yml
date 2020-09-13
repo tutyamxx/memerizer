@@ -13,3 +13,6 @@ jobs:
     - stage: "Testing on OS X"
       os: osx
       script: npm test
+addons:
+  homebrew:
+    update: false
