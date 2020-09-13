@@ -39,7 +39,7 @@ router.get("/truth", (req, res, next) =>
     {
         if(err)
         {
-            res.status(422).send({ status: 422, message: "There was an error creating the meme `Cold Hard Truth` ⚠️" });
+            return res.status(422).send({ status: 422, message: "There was an error creating the meme `Cold Hard Truth` ⚠️" });
         }
 
         return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));

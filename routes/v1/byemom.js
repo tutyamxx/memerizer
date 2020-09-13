@@ -55,7 +55,7 @@ router.post("/byemom", (req, res, next) =>
             {
                 if(err)
                 {
-                    res.status(422).send({ status: 422, message: "There was an error creating the meme `Bye Mom` j ⚠️" });
+                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Bye Mom` j ⚠️" });
                 }
 
                 gm(buffer)
@@ -66,7 +66,7 @@ router.post("/byemom", (req, res, next) =>
                 {
                     if(err)
                     {
-                        res.status(422).send({ status: 422, message: "There was an error creating the meme `Bye Mom` g ⚠️" });
+                        return res.status(422).send({ status: 422, message: "There was an error creating the meme `Bye Mom` g ⚠️" });
                     }
 
                     return ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
