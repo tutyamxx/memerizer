@@ -1,6 +1,6 @@
 os:
   - linux
-  - windows
+  - osx
 language: node_js
 node_js:
   - 12
@@ -11,8 +11,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev libmagic-dev -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install graphicsmagick --force -y; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install imagemagick.app --force -y; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install imagemagick; fi
 install: npm ci
 jobs:
   include:
@@ -20,6 +20,6 @@ jobs:
       os: linux
       script: npm test
 
-    - stage: "Testing on Windows"
-      os: windows
+    - stage: "Testing on OS X"
+      os: osx
       script: npm test
