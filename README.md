@@ -4,10 +4,6 @@
 
 <br />
 
-<p align="center">
-  <a href="https://travis-ci.com/tutyamxx/Romanian-Jokes-API"><img src="https://travis-ci.com/tutyamxx/Romanian-Jokes-API.svg?branch=master"></a>
-</p>
-
 # Memerizer
 
 * A sad Memerizer API that generates meme pictures on the fly using JavaScript, without the need of saving them to your device!
