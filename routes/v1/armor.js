@@ -36,7 +36,7 @@ router.get("/armor", (req, res, next) =>
     .font(join(__dirname, "../../public/fonts/AgencyFB-Bold.ttf"), FontSize)
     .fill("#111111")
     .draw(["text 0, 350 '" + wrap(FormattedMeanText, { width: (FormattedMeanText.length >= 20) ? 30 : 25 }) + "'"])
-    .toBuffer("armor.png", (err, buffer) =>
+    .toBuffer((err, buffer) =>
     {
         if(err)
         {

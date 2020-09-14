@@ -39,7 +39,7 @@ router.post("/fool", (req, res, next) =>
             images[0].resize(170, 150).quality(100);
             images[1].resize(130, 110).rotate(4).quality(100);
 
-            images[2].composite(images[0], 136, 148).composite(images[1], 128, 637).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[2].composite(images[0], 136, 148).composite(images[1], 128, 637).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

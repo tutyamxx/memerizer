@@ -37,7 +37,7 @@ router.post("/disabled", (req, res, next) =>
         {
             images[0].resize(196, Jimp.AUTO).quality(100);
 
-            images[1].composite(images[0], 498, 330).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 498, 330).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

@@ -36,7 +36,7 @@ router.post("/loser", (req, res, next) =>
         Promise.all([Image1, Image2]).then((images) =>
         {
             images[0].resize(90, 90).rotate(16).quality(100);
-            images[1].composite(images[0], 586, 532).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 586, 532).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

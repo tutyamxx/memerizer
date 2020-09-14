@@ -35,7 +35,7 @@ router.get("/truth", (req, res, next) =>
     .font(join(__dirname, "../../public/fonts/MangaSpeak.ttf"), FontSize)
     .fill("#111111")
     .draw(["text 0, 193 '" + wrap(FormattedText, { width: (FormattedText.length >= 50) ? 21 : 15 }) + "'"])
-    .toBuffer("truth.png", (err, buffer) =>
+    .toBuffer((err, buffer) =>
     {
         if(err)
         {

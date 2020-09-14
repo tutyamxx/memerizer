@@ -28,7 +28,7 @@ router.get("/eww", (req, res, next) =>
     .font(join(__dirname, "../../public/fonts/Helvetica.ttf"), FontSize)
     .fill("#111111")
     .draw(["rotate -55 text -430, 480 '" + szName.trim() + "'"])
-    .toBuffer("eww.png", (err, buffer) =>
+    .toBuffer((err, buffer) =>
     {
         if(err)
         {

@@ -39,7 +39,7 @@ router.post("/beautiful", async (req, res, next) =>
             images[0].resize(82, 93).quality(100);
             images[1].resize(83, 97).quality(100);
 
-            images[2].composite(images[0], 217, 15).composite(images[1], 206, 213).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[2].composite(images[0], 217, 15).composite(images[1], 206, 213).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

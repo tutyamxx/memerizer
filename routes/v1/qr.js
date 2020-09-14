@@ -23,7 +23,7 @@ router.get("/qr", (req, res, next) =>
 
     Jimp.read(encodeURI(`https://api.qrserver.com/v1/create-qr-code/?size=250x250&bgcolor=${(Math.random() * 0xFFFFFF << 0).toString(16)}&data=${szTextInQR}`)).then((image) =>
     {
-        image.getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+        image.getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {

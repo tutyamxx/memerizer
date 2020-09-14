@@ -31,7 +31,7 @@ router.post("/pixel", (req, res, next) =>
 
         Jimp.read(ImageBodyParam).then((image) =>
         {
-            image.pixelate(20).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            image.pixelate(20).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

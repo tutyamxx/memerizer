@@ -38,14 +38,14 @@ router.post("/draw", async (req, res, next) =>
             }
         });
 
-        Image1.getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+        Image1.getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {
                 return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` j ⚠️" });
             }
 
-            gm(buffer).border(1, 1).borderColor("black").charcoal(0.1).coalesce().despeckle().autoOrient().toBuffer("draw.png", (err, buffer2) =>
+            gm(buffer).border(1, 1).borderColor("black").charcoal(0.1).coalesce().despeckle().autoOrient().toBuffer((err, buffer2) =>
             {
                 if(err)
                 {

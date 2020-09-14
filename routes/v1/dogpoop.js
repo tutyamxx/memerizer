@@ -38,7 +38,7 @@ router.post("/dogpoop", (req, res, next) =>
         Promise.all([Image1, Image2]).then((images) =>
         {
             images[0].resize(50, 50).rotate(RandomDegrees).color([{ apply: 'red', params: [160] }]).color([{ apply: 'green', params: [82] }]).color([{ apply: 'blue', params: [45] }]).quality(100);
-            images[1].composite(images[0], 186, 249).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 186, 249).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

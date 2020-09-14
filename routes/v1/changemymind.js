@@ -49,7 +49,7 @@ router.post("/changemymind", (req, res, next) =>
         Promise.all([Image1, Image2]).then((images) =>
         {
             images[0].resize(40, 40).rotate(9);
-            images[1].composite(images[0], 175, 43).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 175, 43).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {
@@ -60,7 +60,7 @@ router.post("/changemymind", (req, res, next) =>
                 .font(join(__dirname, "../../public/fonts/Helvetica.ttf"), 14)
                 .fill("#111111")
                 .draw(["rotate -7 text 195, 290 '" + szText.replace(/'/g, "`").replace(/["']/g, "").trim() + "'"])
-                .toBuffer("changemymind.png", (err, buffer2) =>
+                .toBuffer((err, buffer2) =>
                 {
                     if(err)
                     {

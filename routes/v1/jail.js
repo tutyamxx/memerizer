@@ -45,7 +45,7 @@ router.post("/jail", (req, res, next) =>
             images[0].resize(400, Jimp.AUTO).quality(100);
             images[1].resize(400, Jimp.AUTO).quality(100);
 
-            images[1].composite(images[0], 0, 0, { mode: Jimp.BLEND_DESTINATION_OVER }).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 0, 0, { mode: Jimp.BLEND_DESTINATION_OVER }).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

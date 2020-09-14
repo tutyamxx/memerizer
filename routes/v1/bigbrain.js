@@ -38,14 +38,14 @@ router.post("/bigbrain", async (req, res, next) =>
             }
         });
 
-        Image1.getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+        Image1.getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {
                 return res.status(422).send({ status: 422, message: "There was an error creating the meme `Big Brain Time` j ⚠️" });
             }
 
-            gm(buffer).implode(-2.9).autoOrient().toBuffer("bigbrain.png", (err, buffer2) =>
+            gm(buffer).implode(-2.9).autoOrient().toBuffer((err, buffer2) =>
             {
                 if(err)
                 {

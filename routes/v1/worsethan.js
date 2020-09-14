@@ -36,7 +36,7 @@ router.post("/worsethan", (req, res, next) =>
         Promise.all([Image1, Image2]).then((images) =>
         {
             images[0].resize(70, 70).quality(100);
-            images[1].composite(images[0], 28, 27).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 28, 27).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {

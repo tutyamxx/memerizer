@@ -52,7 +52,7 @@ router.post("/byemom", (req, res, next) =>
             images[0].resize(70, 70).quality(100);
             images[1].resize(125, 125).quality(100);
 
-            images[2].composite(images[0], 532, 9).composite(images[1], 76, 326).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[2].composite(images[0], 532, 9).composite(images[1], 76, 326).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {
@@ -63,7 +63,7 @@ router.post("/byemom", (req, res, next) =>
                 .font(join(__dirname, "../../public/fonts/Helvetica.ttf"), 20)
                 .fill("#111111")
                 .draw(["rotate -25 text 70, 703 '" + decodeURI(szSearchQuery.replace(/'/g, "`").replace(/\"/g, "").trim()) + "'"])
-                .toBuffer("byemom.png", (err, buffer2) =>
+                .toBuffer((err, buffer2) =>
                 {
                     if(err)
                     {

@@ -31,7 +31,7 @@ router.get("/belike", (req, res, next) =>
 
     Jimp.read(encodeURI(`https://belikebill.ga/billgen-API.php?default=1&name=${decodeURI(szUsernameParam.replace(/[^a-zA-Z0-9]/gi, ""))}&sex=${szGenderParam.toLowerCase()}`)).then((image) =>
     {
-        image.getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+        image.getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {

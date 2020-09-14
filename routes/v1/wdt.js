@@ -36,7 +36,7 @@ router.post("/wdt", (req, res, next) =>
         Promise.all([Image1, Image2]).then((images) =>
         {
             images[0].resize(717, 408).quality(100);
-            images[1].composite(images[0], 0, 157).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[1].composite(images[0], 0, 157).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {
