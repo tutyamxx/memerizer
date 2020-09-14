@@ -1,4 +1,5 @@
 const Jimp = require("jimp");
+const isUri = require("is-uri");
 const { join } = require("path");
 const express = require("express");
 const router = express.Router();
@@ -10,14 +11,14 @@ router.post("/fool", (req, res, next) =>
 {
     try
     {
-        if(!req.files)
+        const ImageBodyParam = req.body.image;
+
+        if(!ImageBodyParam)
         {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_PROVIDE_IMAGE });
         }
 
-        const UploadedPicture = req.files.image;
-
-        if(req.files && !APIConstants.AcceptedImageTypes.includes(req.files.image.mimetype))
+        if(!isUri(ImageBodyParam))
         {
             return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
         }
@@ -29,8 +30,8 @@ router.post("/fool", (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        let Image1 = Jimp.read(UploadedPicture.data);
-        let Image2 = Jimp.read(UploadedPicture.data);
+        let Image1 = Jimp.read(ImageBodyParam);
+        let Image2 = Jimp.read(ImageBodyParam);
         let Image3 = Jimp.read(join(__dirname, "../../public/images/fool/fool.png"));
 
         Promise.all([Image1, Image2, Image3]).then((images) =>

@@ -1,4 +1,5 @@
 const Jimp = require("jimp");
+const isUri = require("is-uri");
 const { join } = require("path");
 const express = require("express");
 const router = express.Router();
@@ -10,14 +11,14 @@ router.post("/rip", (req, res, next) =>
 {
     try
     {
-        if(!req.files)
+        const ImageBodyParam = req.body.image;
+
+        if(!ImageBodyParam)
         {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_PROVIDE_IMAGE });
         }
 
-        const UploadedPicture = req.files.image;
-
-        if(req.files && !APIConstants.AcceptedImageTypes.includes(req.files.image.mimetype))
+        if(!isUri(ImageBodyParam))
         {
             return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
         }
@@ -44,7 +45,7 @@ router.post("/rip", (req, res, next) =>
             {
                 const totalWidth = Jimp.measureText(font, DecancerifiedUsername);
 
-                Jimp.read(UploadedPicture.data).then((image2) =>
+                Jimp.read(ImageBodyParam).then((image2) =>
                 {
                     image2.resize(70, 70).greyscale();
                     image.print(font, Math.floor(image.bitmap.width / 2 - totalWidth / 2), 160, DecancerifiedUsername).composite(image2, (image.bitmap.width / 2) - 37, 190).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
