@@ -30,7 +30,7 @@
 * Open the containing folder
 * Type `npm i && npm start`
 * Open the API in your browser http://localhost:6969/api/v1
-* To run the tests (**173** of them actually), type `npm test`
+* To run the tests (**190** of them actually), type `npm test`
 
 # Usage
 
