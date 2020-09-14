@@ -30,7 +30,14 @@ router.post("/draw", async (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        let Image1 = await Jimp.read(ImageBodyParam);
+        let Image1 = await Jimp.read(ImageBodyParam).catch(err =>
+        {
+            if(err)
+            {
+                return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
+            }
+        });
+
         Image1.getBuffer(Jimp.MIME_PNG, (err, buffer) =>
         {
             if(err)
@@ -50,10 +57,7 @@ router.post("/draw", async (req, res, next) =>
         });
     }
 
-    catch(err)
-    {
-        return res.status(500).send({ status: 500, message: err.message });
-    }
+    catch(err) { }
 });
 
 module.exports.router = router;

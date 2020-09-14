@@ -73,6 +73,13 @@ router.post("/byemom", (req, res, next) =>
                     return ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
                 });
             });
+
+        }).catch(err =>
+        {
+            if (err)
+            {
+                return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
+            }
         });
     }
 
