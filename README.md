@@ -17,6 +17,7 @@
 * Heavily relies on [Jimp](https://github.com/oliver-moran/jimp) and [GraphicsMagick](https://github.com/aheckmann/gm)
 * Currently supported response formats are: `Buffer` and `Base64`
 * Originally, my discord bot used to have these commands, but I thought to transform them into an API, this way other people can easily generate memes with it.
+* Thanks to my friend [CoachAprax](https://www.youtube.com/user/freeAEgraphics) for this dank banner
 
 # How to use
 
