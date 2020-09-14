@@ -20,7 +20,7 @@
 
 # How to use
 
-* Still a work in progress, but docs will be on [Official Documentation](https://tutyamxx.gitbook.io/memerizer-api-documentation/)
+* Check out this amazingly documented book [Official Documentation](https://tutyamxx.gitbook.io/memerizer-api-documentation/)
 
 # How to run it locally
 
