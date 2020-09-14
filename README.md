@@ -12,10 +12,10 @@
 
 * A sad Memerizer API that generates meme pictures on the fly using JavaScript, without the need of saving them to your device!
 * It also never writes any data on the machine that is running, everything happens magically on the memory using buffers!
-* It returns the picture as a `Buffer` or `Base64` string (useful for directly displaying them in a website or on your Discord, Slack, bots or any other IRC channels)
+* It returns the picture data type as a `Buffer` or `Base64` string (useful for directly displaying them in a website or on your Discord, Slack, bots or any other IRC channels)
 * It has **25** unique endpoints for dank image manipulations 🤘🏽🤪🤘🏽
 * Heavily relies on [Jimp](https://github.com/oliver-moran/jimp) and [GraphicsMagick](https://github.com/aheckmann/gm)
-* Currently supported response formats are: `Buffer` and `Base64`
+* Currently supported data type response formats are: `Buffer` and `Base64`
 * Originally, my discord bot used to have these commands, but I thought to transform them into an API, this way other people can easily generate memes with it.
 * Thanks to my friend [CoachAprax](https://www.youtube.com/user/freeAEgraphics) for this dank banner
 
