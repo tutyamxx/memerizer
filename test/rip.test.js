@@ -4,7 +4,7 @@ const isBase64 = require("is-base64");
 
 const FileImageCat = "https://gblobscdn.gitbook.com/spaces%2F-MH8I_V6r3vrKRSRrAoX%2Favatar-1600034351122.png?alt=media";
 
-describe("🎯 Testing (Bye Mom) API endpoint", () =>
+describe("🎯 Testing (R.I.P) API endpoint", () =>
 {
     it("GET - Should return a message and a status code of (404) for GET requests", (done) =>
     {
