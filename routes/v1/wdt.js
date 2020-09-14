@@ -23,7 +23,6 @@ router.post("/wdt", (req, res, next) =>
             return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
         }
 
-
         const ReturnFormat = req.query.format;
 
         if(!ReturnFormat || !APIConstants.AcceptedReturnFormat.includes(ReturnFormat))
