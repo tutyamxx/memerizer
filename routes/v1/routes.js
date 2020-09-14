@@ -32,6 +32,8 @@ router.post("/fool", require("./fool.js").router);
 router.post("/bigbrain", require("./bigbrain.js").router);
 router.post("/draw", require("./draw.js").router);
 router.post("/byemom", require("./byemom.js").router);
+router.post("/changemymind", require("./changemymind.js").router);
+router.post("/deepfry", require("./deepfry.js").router);
 
 // --| Routing for GET endpoints
 router.get("/belike", require("./belike.js").router);

@@ -34,6 +34,6 @@
 
 # Usage
 
-* API Request limit is **50** requests per minute per IP, to slightly prevent spamming Heroku
+* API Request limit is **60** requests per minute per IP, to slightly prevent spamming Heroku
 * API Endpoint URL hosted on heroku ➡️ https://memerizer.herokuapp.com/api/v1
 * If you get an error while accessing the API endpoints is most likely that I'm out of free monthly Heroku Dyno hours 🤐
