@@ -39,7 +39,7 @@ router.post("/pixel", (req, res, next) =>
                 }
 
                 return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
-            })
+            });
 
         }).catch(err =>
         {

@@ -35,6 +35,10 @@ router.post("/byemom", require("./byemom.js").router);
 router.post("/changemymind", require("./changemymind.js").router);
 router.post("/deepfry", require("./deepfry.js").router);
 router.post("/circle", require("./circle.js").router);
+router.post("/spongeburn", require("./spongeburn.js").router);
+router.post("/emboss", require("./emboss.js").router);
+router.post("/glitch", require("./glitch.js").router);
+router.post("/missionpassed", require("./missionpassed.js").router);
 
 // --| Routing for GET endpoints
 router.get("/belike", require("./belike.js").router);

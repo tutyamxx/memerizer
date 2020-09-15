@@ -1,4 +1,3 @@
-const gm = require("gm").subClass({ imageMagick: false });
 const Jimp = require("jimp");
 const isUri = require("is-uri");
 const express = require("express");
@@ -6,8 +5,8 @@ const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-// --| Endpoint to "Draw" meme
-router.post("/draw", async (req, res, next) =>
+// --| Endpoint to "Emboss" meme
+router.post("/emboss", async (req, res, next) =>
 {
     try
     {
@@ -38,22 +37,14 @@ router.post("/draw", async (req, res, next) =>
             }
         });
 
-        APIConstants.Image[0].getBuffer(Jimp.AUTO, (err, buffer) =>
+        APIConstants.Image[0].convolute([[-2, -1, 0], [-1, 1, 1], [0, 1, 2]]).getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {
-                return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` j ⚠️" });
+                return res.status(422).send({ status: 422, message: "There was an error creating the meme `Emboss` ⚠️" });
             }
 
-            gm(buffer).border(1, 1).borderColor("black").charcoal(0.1).coalesce().despeckle().autoOrient().toBuffer((err, buffer2) =>
-            {
-                if(err)
-                {
-                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` g ⚠️" });
-                }
-
-                return ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
-            });
+            return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
         });
     }
 

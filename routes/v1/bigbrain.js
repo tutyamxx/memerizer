@@ -30,7 +30,7 @@ router.post("/bigbrain", async (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        let Image1 = await Jimp.read(ImageBodyParam).catch(err =>
+        APIConstants.Image[0] = await Jimp.read(ImageBodyParam).catch(err =>
         {
             if(err)
             {
@@ -38,7 +38,7 @@ router.post("/bigbrain", async (req, res, next) =>
             }
         });
 
-        Image1.getBuffer(Jimp.AUTO, (err, buffer) =>
+        APIConstants.Image[0].getBuffer(Jimp.AUTO, (err, buffer) =>
         {
             if(err)
             {

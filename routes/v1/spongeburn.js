@@ -1,13 +1,13 @@
 const Jimp = require("jimp");
-const isUri = require("is-uri");
 const { join } = require("path");
+const isUri = require("is-uri");
 const express = require("express");
 const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-// --| Endpoint to "Worse than hitler Family Guy" meme
-router.post("/worsethan", (req, res, next) =>
+// --| Endpoint to "Spongebob Burning Paper" meme
+router.post("/spongeburn", (req, res, next) =>
 {
     try
     {
@@ -31,16 +31,16 @@ router.post("/worsethan", (req, res, next) =>
         }
 
         APIConstants.Image[0] = Jimp.read(ImageBodyParam);
-        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/worsethanhitler/hitler.jpg"));
+        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/spongebobburn/spongebobburn.png"));
 
         Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
-            images[0].resize(70, 70).quality(100);
-            images[1].composite(images[0], 28, 27).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
+            images[0].resize(122, 170).quality(100);
+            images[1].composite(images[0], 56, 73).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)
                 {
-                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Worse than hitler Family Guy` ⚠️" });
+                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Spongebob Burning Paper` ⚠️" });
                 }
 
                 return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));

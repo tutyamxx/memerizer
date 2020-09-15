@@ -1,13 +1,13 @@
-const gm = require("gm").subClass({ imageMagick: false });
 const Jimp = require("jimp");
+const glitch = require("glitch-canvas");
 const isUri = require("is-uri");
 const express = require("express");
 const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-// --| Endpoint to "Draw" meme
-router.post("/draw", async (req, res, next) =>
+// --| Endpoint to "Glitch" meme
+router.post("/glitch", async (req, res, next) =>
 {
     try
     {
@@ -42,17 +42,16 @@ router.post("/draw", async (req, res, next) =>
         {
             if(err)
             {
-                return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` j ⚠️" });
+                return res.status(422).send({ status: 422, message: "There was an error creating the meme `Glitch` ⚠️" });
             }
 
-            gm(buffer).border(1, 1).borderColor("black").charcoal(0.1).coalesce().despeckle().autoOrient().toBuffer((err, buffer2) =>
+            glitch({ seed: 25, quality: 30, amount: 35 }).fromBuffer(buffer).toBuffer().then((glitchedbuffer) =>
             {
-                if(err)
-                {
-                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Draw` g ⚠️" });
-                }
+                return ReturnFormat === "buffer" ? res.status(200).send(glitchedbuffer) : res.status(200).send(Buffer.from(glitchedbuffer, "base64").toString("base64"));
 
-                return ReturnFormat === "buffer" ? res.status(200).send(buffer2) : res.status(200).send(Buffer.from(buffer2, "base64").toString("base64"));
+            }).catch(err =>
+            {
+                return res.status(422).send({ status: 422, message: "There was an error creating the meme `Glitch` ⚠️" });
             });
         });
     }

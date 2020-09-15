@@ -30,10 +30,10 @@ router.post("/circle", async (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        let Image1 = Jimp.read(ImageBodyParam);
-        let CircleMask = Jimp.read(join(__dirname, "../../public/images/circlemask/circlemask.png"));
+        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/circlemask/circlemask.png"));
 
-        Promise.all([Image1, CircleMask]).then((images) =>
+        Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             const iUploadedPicWidth = images[0].bitmap.width > 512 ? 512 : images[0].bitmap.width;
             const iUploadedPicHeight = images[0].bitmap.height > 512 ? 512 : images[0].bitmap.height;

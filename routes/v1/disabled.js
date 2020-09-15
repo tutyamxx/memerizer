@@ -36,7 +36,6 @@ router.post("/disabled", (req, res, next) =>
         Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             images[0].resize(196, Jimp.AUTO).quality(100);
-
             images[1].composite(images[0], 498, 330).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
             {
                 if(err)

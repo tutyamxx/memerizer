@@ -22,7 +22,7 @@ router.get("/eww", (req, res, next) =>
         return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
     }
 
-    let FontSize = (szName.length >= 20) ? 14 : 20;
+    const FontSize = (szName.length >= 20) ? 14 : 20;
 
     gm(join(__dirname, "../../public/images/eww/eww.png"))
     .font(join(__dirname, "../../public/fonts/Helvetica.ttf"), FontSize)
