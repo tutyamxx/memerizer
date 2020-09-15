@@ -28,8 +28,8 @@ router.get("/truth", (req, res, next) =>
         return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
     }
 
-    let FontSize = (szTruthText.length >= 50) ? 16 : 22;
-    let FormattedText = szTruthText.replace(/'/g, "`").trim();
+    const FontSize = (szTruthText.length >= 50) ? 16 : 22;
+    const FormattedText = szTruthText.replace(/'/g, "`").trim();
 
     gm(join(__dirname, "../../public/images/truth/truth.jpg"))
     .font(join(__dirname, "../../public/fonts/MangaSpeak.ttf"), FontSize)

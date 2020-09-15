@@ -30,10 +30,10 @@ router.post("/disabled", (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        let Image1 = Jimp.read(ImageBodyParam);
-        let Image2 = Jimp.read(join(__dirname, "../../public/images/disabled/disabled.png"));
+        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/disabled/disabled.png"));
 
-        Promise.all([Image1, Image2]).then((images) =>
+        Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             images[0].resize(196, Jimp.AUTO).quality(100);
 

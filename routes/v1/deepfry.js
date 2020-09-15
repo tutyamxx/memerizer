@@ -7,8 +7,6 @@ const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-let Image = [];
-
 // --| Endpoint to "Deepfry" meme
 router.post("/deepfry", (req, res, next) =>
 {
@@ -33,18 +31,18 @@ router.post("/deepfry", (req, res, next) =>
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        Image[0] = Jimp.read(ImageBodyParam);
-        Image[1] = Jimp.read(join(__dirname, "../../public/images/deepfry/okhand.png"));
-        Image[2] = Jimp.read(join(__dirname, "../../public/images/deepfry/100emoji.png"));
-        Image[3] = Jimp.read(join(__dirname, "../../public/images/deepfry/laughingemoji.png"));
-        Image[4] = Jimp.read(join(__dirname, "../../public/images/deepfry/fireemoji.png"));
-        Image[5] = Jimp.read(join(__dirname, "../../public/images/deepfry/cry.png"));
+        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/deepfry/okhand.png"));
+        APIConstants.Image[2] = Jimp.read(join(__dirname, "../../public/images/deepfry/100emoji.png"));
+        APIConstants.Image[3] = Jimp.read(join(__dirname, "../../public/images/deepfry/laughingemoji.png"));
+        APIConstants.Image[4] = Jimp.read(join(__dirname, "../../public/images/deepfry/fireemoji.png"));
+        APIConstants.Image[5] = Jimp.read(join(__dirname, "../../public/images/deepfry/cry.png"));
 
         const iRandomDesaturation = [ 0, 5, 0, 70, 100, 0, 3 ];
         const iRandomPosterize = [ 5, 8 ];
         const iRandomInvert = Math.floor(Math.random() * 6);
 
-        Promise.all([Image[0], Image[1], Image[2], Image[3], Image[4], Image[5]]).then((images) =>
+        Promise.all([APIConstants.Image[0], APIConstants.Image[1], APIConstants.Image[2], APIConstants.Image[3], APIConstants.Image[4], APIConstants.Image[5]]).then((images) =>
         {
             images[0].resize(400, 400).dither565().normalize().opaque();
 

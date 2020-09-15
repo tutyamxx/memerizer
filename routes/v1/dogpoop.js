@@ -32,10 +32,10 @@ router.post("/dogpoop", (req, res, next) =>
 
         const RandomDegrees = Math.floor((Math.random() * 360) + 0);
 
-        let Image1 = Jimp.read(ImageBodyParam);
-        let Image2 = Jimp.read(join(__dirname, "../../public/images/dogpoop/dogpoop.png"));
+        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[1] = Jimp.read(join(__dirname, "../../public/images/dogpoop/dogpoop.png"));
 
-        Promise.all([Image1, Image2]).then((images) =>
+        Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             images[0].resize(50, 50).rotate(RandomDegrees).color([{ apply: 'red', params: [160] }]).color([{ apply: 'green', params: [82] }]).color([{ apply: 'blue', params: [45] }]).quality(100);
             images[1].composite(images[0], 186, 249).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>

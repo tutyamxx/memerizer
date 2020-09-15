@@ -37,10 +37,10 @@ router.post("/jail", (req, res, next) =>
             join(__dirname, "../../public/images/jail/jail3.png")
         ];
 
-        let Image1 = Jimp.read(ImageBodyParam);
-        let Image2 = Jimp.read(szRandomJailImages[Math.floor(Math.random() * szRandomJailImages.length)]);
+        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[1] = Jimp.read(szRandomJailImages[Math.floor(Math.random() * szRandomJailImages.length)]);
 
-        Promise.all([Image1, Image2]).then((images) =>
+        Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             images[0].resize(400, Jimp.AUTO).quality(100);
             images[1].resize(400, Jimp.AUTO).quality(100);
