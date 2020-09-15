@@ -6,7 +6,7 @@ const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-// --| Endpoint to "Nothing gets through this armor" meme
+// --| Endpoint to "Nothing Gets Through This Armor" meme
 router.get("/armor", (req, res, next) =>
 {
     const szMeanText = req.query.meantext;
