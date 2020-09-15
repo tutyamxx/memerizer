@@ -12,6 +12,9 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev libmagic-dev -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install imagemagick -y; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then New-Item -Path c:\VCRuntime -ItemType directory; Write "Microsoft Visual C++ 2005 Redistributable Package (x64) for ImageMagick" -Verbose; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then Invoke-WebRequest "https://aka.ms/vs/16/release/VC_redist.arm64.exe" -OutFile "C:\VCRuntime\VC_redist.arm64.exe"; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then Write-Output "Installing package..."; Start-Process "C:\VCRuntime\VC_redist.arm64.exe" -ArgumentList "/norestart /verysilent /q" -Wait; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install graphicsmagick --force -y; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install imagemagick.app --force -y; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
