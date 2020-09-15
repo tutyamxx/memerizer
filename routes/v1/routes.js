@@ -39,7 +39,6 @@ router.post("/circle", require("./circle.js").router);
 // --| Routing for GET endpoints
 router.get("/belike", require("./belike.js").router);
 router.get("/armor", require("./armor.js").router);
-router.get("/qr", require("./qr.js").router);
 router.get("/truth", require("./truth.js").router);
 router.get("/eww", require("./eww.js").router);
 
