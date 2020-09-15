@@ -6,8 +6,8 @@ const router = express.Router();
 
 const APIConstants = require("../../lib/constants");
 
-// --| Endpoint to "Wanted" meme
-router.post("/wanted", (req, res, next) =>
+// --| Endpoint to "Circle" meme
+router.post("/circle", async (req, res, next) =>
 {
     try
     {
@@ -31,20 +31,22 @@ router.post("/wanted", (req, res, next) =>
         }
 
         let Image1 = Jimp.read(ImageBodyParam);
-        let Image2 = Jimp.read(join(__dirname, "../../public/images/wanted/wanted.png"));
+        let CircleMask = Jimp.read(join(__dirname, "../../public/images/circlemask/circlemask.png"));
 
-        Promise.all([Image1, Image2]).then((images) =>
+        Promise.all([Image1, CircleMask]).then((images) =>
         {
-            images[0].resize(450, 442).color([{ apply: 'red', params: [222] }]).color([{ apply: 'green', params: [159] }]).color([{ apply: 'blue', params: [80] }]).brightness(-0.2);
-            images[1].composite(images[0], 140, 354).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
+            const iUploadedPicWidth = images[0].bitmap.width > 512 ? 512 : images[0].bitmap.width;
+            const iUploadedPicHeight = images[0].bitmap.height > 512 ? 512 : images[0].bitmap.height;
+
+            images[0].resize(iUploadedPicWidth, iUploadedPicHeight).mask(images[1].resize(iUploadedPicWidth, iUploadedPicHeight), 0, 0).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
             {
                 if(err)
                 {
-                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Wanted` ⚠️" });
+                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Circle` ⚠️" });
                 }
 
                 return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
-            })
+            });
 
         }).catch(err =>
         {
