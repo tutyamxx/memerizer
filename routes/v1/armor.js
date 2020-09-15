@@ -1,4 +1,4 @@
-const gm = require("gm").subClass({ imageMagick: true });
+const gm = require("gm").subClass({ imageMagick: false });
 const { join } = require("path");
 const wrap = require("word-wrap");
 const express = require("express");

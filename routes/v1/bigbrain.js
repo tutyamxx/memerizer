@@ -1,6 +1,6 @@
 const Jimp = require("jimp");
 const isUri = require("is-uri");
-const gm = require("gm").subClass({ imageMagick: true });
+const gm = require("gm").subClass({ imageMagick: false });
 const express = require("express");
 const router = express.Router();
 
