@@ -36,9 +36,9 @@ router.post("/missionpassed", (req, res, next) =>
         Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) =>
         {
             const iUploadedPicWidth = images[0].bitmap.width > 480 ? 480 : images[0].bitmap.width;
-            const iUploadedPicHeight = images[0].bitmap.height > 360 ? 360 : images[0].bitmap.height;
+            const iUploadedPicHeight = images[0].bitmap.height > 480 ? 480 : images[0].bitmap.height;
 
-            images[0].resize(iUploadedPicWidth, iUploadedPicHeight).greyscale().composite(images[1].resize(iUploadedPicWidth, iUploadedPicHeight), 0, 80).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
+            images[0].resize(iUploadedPicWidth, iUploadedPicHeight).greyscale().composite(images[1].resize(iUploadedPicWidth, iUploadedPicHeight), 0, 0).quality(100).getBuffer(Jimp.MIME_PNG, (err, buffer) =>
             {
                 if(err)
                 {

@@ -29,11 +29,11 @@ router.get("/armor", (req, res, next) =>
     }
 
     const DecodeMeanText = decodeURI(szMeanText);
-    const FontSize = (DecodeMeanText.length >= 20) ? 20 : 28;
-    const FormattedMeanText = DecodeMeanText.replace(/'/g, "`").replace(/["']/g, "").trim().toUpperCase();
+    const FontSize = (DecodeMeanText.length >= 20) ? 16 : 24;
+    const FormattedMeanText = DecodeMeanText.replace(/'/g, "`").replace(/["]/g, "").trim().toUpperCase();
 
     gm(join(__dirname, "../../public/images/armor/armor.png"))
-    .font(join(__dirname, "../../public/fonts/AgencyFB-Bold.ttf"), FontSize)
+    .font(join(__dirname, "../../public/fonts/Kreskowka-Regular.ttf"), FontSize)
     .fill("#111111")
     .draw(["text 0, 350 '" + wrap(FormattedMeanText, { width: (FormattedMeanText.length >= 20) ? 30 : 25 }) + "'"])
     .toBuffer((err, buffer) =>
