@@ -34,7 +34,7 @@ app.set("trust proxy", 1);
 const APILimiter = rateLimit(
 {
     windowMs: 60000,
-    max: 60,
+    max: 65,
     skipFailedRequests: true,
     message:
     {

@@ -39,6 +39,7 @@ router.post("/spongeburn", require("./spongeburn.js").router);
 router.post("/emboss", require("./emboss.js").router);
 router.post("/glitch", require("./glitch.js").router);
 router.post("/missionpassed", require("./missionpassed.js").router);
+router.post("/frame", require("./frame.js").router);
 
 // --| Routing for GET endpoints
 router.get("/belike", require("./belike.js").router);
