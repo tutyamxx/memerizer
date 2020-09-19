@@ -25,7 +25,7 @@
 
 # How to run it locally
 
-* First, install [GraphicsMagick](http://www.graphicsmagick.org/download.html) and [ImageMagick](https://imagemagick.org/script/download.php) on your Operating System
+* First, install [GraphicsMagick](http://www.graphicsmagick.org/download.html)
 * Clone this repo
 * Open the containing folder
 * Type `npm i && npm start`
