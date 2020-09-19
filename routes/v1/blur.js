@@ -1,4 +1,4 @@
-const gm = require("gm").subClass({ imageMagick: false });
+const gm = require("gm");
 const Jimp = require("jimp");
 const isUri = require("is-uri");
 const express = require("express");
@@ -56,7 +56,6 @@ router.post("/blur", async (req, res, next) =>
             {
                 if(err)
                 {
-                    console.log(err)
                     return res.status(422).send({ status: 422, message: "There was an error creating the meme `Blur` g ⚠️" });
                 }
 

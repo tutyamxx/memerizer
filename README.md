@@ -42,5 +42,5 @@
 
 * Testing works on Windows operating systems as well, but since Travis CI at the moment, has only **beta** Windows environments, **Chocolatey** fails to install some needed VC redistributables.
 * If you're using Windows, install needed tools from `#How to run it locally` or use [Chocolatey](https://chocolatey.org/)
-* Open an elevated `Windows PowerShell` terminal and type the following commands: `choco install graphicsmagick --force -y` and then `choco install imagemagick.app --force -y`
+* Open an elevated `Windows PowerShell` terminal and type the following commands: `choco install graphicsmagick --force -y`
 * All should work fine.

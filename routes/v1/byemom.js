@@ -1,5 +1,5 @@
 const Jimp = require("jimp");
-const gm = require("gm").subClass({ imageMagick: false });
+const gm = require("gm");
 const isUri = require("is-uri");
 const { join } = require("path");
 const express = require("express");

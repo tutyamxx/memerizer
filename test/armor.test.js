@@ -1,9 +1,8 @@
 const app = require("../app");
 const request = require("supertest");
 const isBase64 = require("is-base64");
-const { join } = require("path");
 
-const FileImageCat = join(process.cwd(), "/public/testimages/cryingcat.png");
+const FileImageCat = "https://i.imgur.com/YQczJjG.png";
 
 describe("🎯 Testing (Armor) API endpoint", () =>
 {
@@ -11,7 +10,7 @@ describe("🎯 Testing (Armor) API endpoint", () =>
     {
         request(app).post("/api/v1/armor")
         .expect("Content-Type", /json/)
-        .attach("image", FileImageCat)
+        .field("image", FileImageCat)
         .end((err, response) =>
         {
             expect(response.status).to.be.equal(404);
