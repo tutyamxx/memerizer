@@ -37,10 +37,3 @@
 * API Request limit is **65** requests per minute per IP, to slightly prevent spamming Heroku
 * API Endpoint URL hosted on heroku ➡️ https://memerizer.herokuapp.com/api/v1
 * If you get an error while accessing the API endpoints is most likely that I'm out of free monthly Heroku Dyno hours 🤐
-
-# Notes
-
-* Testing works on Windows operating systems as well, but since Travis CI at the moment, has only **beta** Windows environments, **Chocolatey** fails to install some needed VC redistributables.
-* If you're using Windows, install needed tools from `#How to run it locally` or use [Chocolatey](https://chocolatey.org/)
-* Open an elevated `Windows PowerShell` terminal and type the following commands: `choco install graphicsmagick --force -y`
-* All should work fine.
