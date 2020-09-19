@@ -18,7 +18,7 @@
 * Currently supported data type response formats are: `Buffer` and `Base64`
 * Originally, my discord bot used to have these commands, but I thought to transform them into an API, this way other people can easily generate memes with it.
 * Thanks to my friend [CoachAprax](https://www.youtube.com/user/freeAEgraphics) for this dank banner
-* To see the results in `base64` format, go to [My base64 Decoder](https://tutyamxx.github.io/base64decoderpage/) page and try it out!
+* To see the results in `base64` format, copy the long string from this [Memerizer API Response](https://memerizer.herokuapp.com/api/v1/armor?meantext="Example%20of%20image%20decoded"&format=base64) and go to [My base64 Decoder](https://tutyamxx.github.io/base64decoderpage/) page and try it out!
 
 # How to use
 
