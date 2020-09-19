@@ -59,7 +59,7 @@ router.post("/changemymind", (req, res, next) =>
                 gm(buffer)
                 .font(join(__dirname, "../../public/fonts/Helvetica.ttf"), 14)
                 .fill("#111111")
-                .draw(["rotate -7 text 195, 290 '" + szText.replace(/'/g, "`").replace(/["']/g, "").trim() + "'"])
+                .draw(["rotate -7 text 195, 290 '" + szText.replace(/'/g, "`").replace(/["]/g, "").trim() + "'"])
                 .toBuffer((err, buffer2) =>
                 {
                     if(err)

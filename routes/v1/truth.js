@@ -29,7 +29,7 @@ router.get("/truth", (req, res, next) =>
     }
 
     const FontSize = (szTruthText.length >= 50) ? 16 : 22;
-    const FormattedText = szTruthText.replace(/'/g, "`").trim();
+    const FormattedText = szTruthText.replace(/'/g, "`").replace(/["]/g, "").trim();
 
     gm(join(__dirname, "../../public/images/truth/truth.jpg"))
     .font(join(__dirname, "../../public/fonts/MangaSpeak.ttf"), FontSize)
