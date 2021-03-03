@@ -1,14 +1,24 @@
-os:
-  - linux
-  - osx
-osx_image: xcode12.2
+matrix:
+  include:
+    # Ubuntu Linux
+    - os: linux
+      dist: xenial
+
+    # Mac OSX Latest
+    - os: osx
+      osx_image: xcode12.2
+
 language: node_js
+
 node_js:
   - lts/*
+
 cache:
   npm: false
+
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:rwky/graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
+
 install: npm ci
