@@ -2,7 +2,6 @@ matrix:
   include:
     # Ubuntu Linux
     - os: linux
-      dist: xenial
 
     # Mac OSX Latest
     - os: osx
