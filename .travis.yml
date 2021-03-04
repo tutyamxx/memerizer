@@ -1,7 +1,7 @@
 matrix:
   include:
     # Windows 
-    - os: windows
+    # - os: windows
     
     # Ubuntu Linux
     - os: linux
