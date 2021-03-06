@@ -1,7 +1,7 @@
 matrix:
   include:
     # Windows
-    - os: windows
+    #- os: windows
 
     # Ubuntu Linux
     - os: linux
@@ -19,7 +19,8 @@ cache:
   npm: false
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then Invoke-WebRequest -Uri 'ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/GraphicsMagick-1.3.36-Q16-win64-dll.exe' -OutFile '$HOME\graphicsmagick.exe'; Start-Process -Wait -FilePath $HOME\graphicsmagick.exe -Argument "/silent" -PassThru; fi
+  # Using this on Windows to download the latest GraphicsMagick version, but travis seems to fail whatever I try on Windows so I'm skipping it atm.
+  #- if [ "$TRAVIS_OS_NAME" = "windows" ]; then Invoke-WebRequest -Uri 'ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/GraphicsMagick-1.3.36-Q16-win64-dll.exe' -OutFile '$HOME\graphicsmagick.exe'; Start-Process -Wait -FilePath $HOME\graphicsmagick.exe -Argument "/silent" -PassThru; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:rwky/graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
