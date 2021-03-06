@@ -1,15 +1,15 @@
 matrix:
   include:
-    # Windows 
-    # - os: windows
-    
+    # Windows
+    - os: windows
+
     # Ubuntu Linux
     - os: linux
 
     # Mac OSX Latest
     - os: osx
       osx_image: xcode12.2
-      
+
 language: node_js
 
 node_js:
@@ -19,7 +19,7 @@ cache:
   npm: false
 
 before_install:
-  # - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install graphicsmagick; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then Invoke-WebRequest -Uri 'ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/GraphicsMagick-1.3.36-Q16-win64-dll.exe' -OutFile '$HOME\graphicsmagick.exe'; Start-Process -Wait -FilePath $HOME\graphicsmagick.exe -Argument "/silent" -PassThru; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:rwky/graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install graphicsmagick -y; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install graphicsmagick; fi
