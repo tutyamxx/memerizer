@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.com/tutyamxx/memerizer"><img src="https://travis-ci.com/tutyamxx/memerizer.svg?branch=master"></a>
+    <a href="https://app.travis-ci.com/github/tutyamxx/memerizer"><img src="https://app.travis-ci.com/tutyamxx/memerizer.svg?branch=master"></a>
 </p>
 
 <br />
