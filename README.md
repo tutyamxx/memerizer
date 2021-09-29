@@ -20,6 +20,9 @@
 * Thanks to my friend [CoachAprax](https://www.youtube.com/user/freeAEgraphics) for this dank banner
 * To see the results in `base64` format from your API responses is super easy. I'll show you how! As an example copy the long string from this [Memerizer API Response](https://memerizer.herokuapp.com/api/v1/armor?meantext="Example%20of%20image%20decoded"&format=base64) and go to [My base64 Decoder](https://tutyamxx.github.io/base64decoderpage/) page and try it out!
 
+# IMPORTANT !
+* If you get an error while accessing the API endpoints is most likely that I'm out of free monthly Heroku Dyno hours 🤐
+
 # How to use
 
 * Check out this amazingly documented book [Official Documentation](https://tutyamxx.gitbook.io/memerizer-api-documentation/)
@@ -37,4 +40,4 @@
 
 * API Request limit is **65** requests per minute per IP, to slightly prevent spamming Heroku
 * API Endpoint URL hosted on heroku ➡️ https://memerizer.herokuapp.com/api/v1
-* If you get an error while accessing the API endpoints is most likely that I'm out of free monthly Heroku Dyno hours 🤐
+
