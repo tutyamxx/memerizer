@@ -26,7 +26,6 @@
     },
     "devDependencies": {
         "chai": "^4.3.6",
-        "eslint": "^8.22.0",
         "is-base64": "^1.1.0",
         "mocha": "^10.0.0",
         "supertest": "^6.2.4"
