@@ -31,13 +31,13 @@
 
 1. First, install [GraphicsMagick](http://www.graphicsmagick.org/download.html)
 2. If using `macOS` run `brew install graphicsmagick`
-3. If using `ubuntu` run `sudo add-apt-repository ppa:rwky/graphicsmagick` and `sudo apt-get install graphicsmagick`
+3. If using `ubuntu` run `sudo apt-get install graphicsmagick -y`
 4. If using `macOS` run `brew install pkg-config cairo pango libpng jpeg giflib librsvg`
-5. If using `ubuntu` run `sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev`
+5. If using `ubuntu` run `sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y`
 6. Clone this repo
 7. Open the containing folder
-8. Type first, `npm install canvas --build-from-source` (make sure you did step `2` or `3` depending of your os)
-9. Type `npm install && npm start`
+8. Type first, `npm install --build-from-source` (make sure you did step `2` or `3` depending of your os)
+9. Then, to run it, type `npm start`
 10. Open the API in your browser http://localhost:6969/api/v1
 11. To run the tests (**234** of them actually), type `npm test`
 
