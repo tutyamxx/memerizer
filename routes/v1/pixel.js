@@ -1,57 +1,47 @@
-const Jimp = require("jimp");
-const isUri = require("is-uri");
-const express = require("express");
+/* eslint-disable no-undef */
+
+const Jimp = require('jimp');
+const isUri = require('is-uri');
+const express = require('express');
 const router = express.Router();
 
-const APIConstants = require("../../lib/constants");
+const APIConstants = require('../../lib/constants');
 
 // --| Endpoint to "Pixel" meme
-router.post("/pixel", (req, res, next) =>
-{
-    try
-    {
-        const ImageBodyParam = req.body.image;
+router.post('/pixel', (req, res) => {
+    try {
+        const ImageBodyParam = req.body?.image;
 
-        if(!ImageBodyParam)
-        {
+        if (!ImageBodyParam) {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_PROVIDE_IMAGE });
         }
 
-        if(!isUri(ImageBodyParam))
-        {
+        if (!isUri(ImageBodyParam)) {
             return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
         }
 
-        const ReturnFormat = req.query.format;
+        const ReturnFormat = req.query?.format;
 
-        if(!ReturnFormat || !APIConstants.AcceptedReturnFormat.includes(ReturnFormat))
-        {
+        if (!ReturnFormat || !APIConstants.AcceptedReturnFormat.includes(ReturnFormat)) {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        Jimp.read(ImageBodyParam).then((image) =>
-        {
-            image.pixelate(20).quality(100).getBuffer(Jimp.AUTO, (err, buffer) =>
-            {
-                if(err)
-                {
-                    return res.status(422).send({ status: 422, message: "There was an error creating the meme `Pixel` ⚠️" });
+        Jimp.read(ImageBodyParam).then((image) => {
+            image.pixelate(20).quality(100).getBuffer(Jimp.AUTO, (err, buffer) => {
+                if (err) {
+                    return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Pixel` ⚠️' });
                 }
 
-                return ReturnFormat === "buffer" ? res.status(200).send(buffer) : res.status(200).send(Buffer.from(buffer, "base64").toString("base64"));
+                return ReturnFormat === 'buffer'
+                    ? res.status(200).send(buffer)
+                    : res.status(200).send(Buffer.from(buffer, 'base64').toString('base64'));
             });
-
-        }).catch(err =>
-        {
-            if(err)
-            {
+        }).catch((err) => {
+            if (err) {
                 return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
             }
         });
-    }
-
-    catch(err)
-    {
+    } catch (err) {
         return res.status(500).send({ status: 500, message: err.message });
     }
 });
