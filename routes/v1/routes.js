@@ -8,7 +8,10 @@ router.use((req, res, next) => {
 
 // --| Default API endpoint. Check if is working :)
 // eslint-disable-next-line no-unused-vars
-router.get('/', (req, res, next) => res.status(200).json({ status: 200, message: 'I don\'t always access endpoints, but when I do, I get a 200 status 🤘🏽🤪🤘🏽' }));
+router.get('/', (req, res, next) => res.status(200).json({
+    status: 200,
+    message: 'I don\'t always access endpoints, but when I do, I get a 200 status 🤘🏽🤪🤘🏽'
+}));
 
 // --| Routing for POST endpoints
 router.post('/beautiful', require('./beautiful.js').router);

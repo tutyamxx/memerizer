@@ -49,9 +49,10 @@ app.use('/api/v1', memesRoutes.router);
 
 // --| 404 Response
 // eslint-disable-next-line no-unused-vars
-app.use((req, res, next) => {
-    res.status(404).json({ status: 404, message: 'Sorry, can\'t access the endpoint you are looking for 👀. Is it POST or GET 🤔 ?' });
-});
+app.use((req, res, next) => res.status(404).json({
+    status: 404,
+    message: 'Sorry, can\'t access the endpoint you are looking for 👀. Is it POST or GET 🤔 ?'
+}));
 
 // --| Log the info on server startup
 // eslint-disable-next-line no-console

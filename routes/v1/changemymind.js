@@ -12,33 +12,33 @@ const APIConstants = require('../../lib/constants');
 // --| Endpoint to "Change My Mind" meme
 router.post('/changemymind', (req, res) => {
     try {
-        const ImageBodyParam = req.body?.image;
+        const imageBodyParam = req.body?.image;
 
-        if (!ImageBodyParam) {
+        if (!imageBodyParam) {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_PROVIDE_IMAGE });
         }
 
-        if (!isUri(ImageBodyParam)) {
+        if (!isUri(imageBodyParam)) {
             return res.status(415).send({ status: 415, message: APIConstants.ReturnErrorType.ERROR_INVALID_FILETYPE });
         }
 
-        const szText = req.query?.opinion;
+        const opinionTextQuery = req.query?.opinion;
 
-        if (!szText || szText?.length <= 0 || typeof szText !== 'string') {
+        if (!opinionTextQuery || opinionTextQuery?.length <= 0 || typeof opinionTextQuery !== 'string') {
             return res.status(400).send({ status: 400, message: 'Invalid opinion query specified! You need to specifiy a text in your query parameter. Correct usage is /changemymind?opinion=\'your opinion here\' 🙄' });
         }
 
-        if (szText?.length > 27) {
+        if (opinionTextQuery?.length > 27) {
             return res.status(400).send({ status: 400, message: 'Your opinion text is too long. Maximum 27 characters please... 🙄' });
         }
 
-        const ReturnFormat = req.query?.format;
+        const returnFormat = req.query?.format;
 
-        if (!ReturnFormat || !APIConstants.AcceptedReturnFormat.includes(ReturnFormat)) {
+        if (!returnFormat || !APIConstants.AcceptedreturnFormat.includes(returnFormat)) {
             return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
         }
 
-        APIConstants.Image[0] = Jimp.read(ImageBodyParam);
+        APIConstants.Image[0] = Jimp.read(imageBodyParam);
         APIConstants.Image[1] = Jimp.read(join(__dirname, '../../public/images/changemymind/changemymind.jpg'));
 
         Promise.all([APIConstants.Image[0], APIConstants.Image[1]]).then((images) => {
@@ -51,13 +51,13 @@ router.post('/changemymind', (req, res) => {
                 gm(buffer)
                     .font(join(__dirname, '../../public/fonts/Helvetica.ttf'), 14)
                     .fill('#111111')
-                    .draw(["rotate -7 text 195, 290 '" + szText?.replace(/'/g, "`")?.replace(/["]/g, "")?.trim() + "'"])
+                    .draw(["rotate -7 text 195, 290 '" + decodeURIComponent(opinionTextQuery?.replace(/'/g, "`")?.replace(/["]/g, "")?.trim()) + "'"])
                     .toBuffer((err2, buffer2) => {
                         if (err) {
                             return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Change My Mind` g ⚠️' });
                         }
 
-                        return ReturnFormat === 'buffer'
+                        return returnFormat === 'buffer'
                             ? res.status(200).send(buffer2)
                             : res.status(200).send(Buffer.from(buffer2, 'base64').toString('base64'));
                     });

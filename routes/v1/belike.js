@@ -8,32 +8,32 @@ const APIConstants = require('../../lib/constants');
 
 // --| Endpoint to "Be Like Bill" meme
 router.get('/belike', (req, res) => {
-    const szUsernameParam = req.query?.name;
-    const szGenderParam = req.query?.gender;
+    const usernameParam = req.query?.name;
+    const genderParam = req.query?.gender;
 
     const AllowedGenderParam = ['m', 'f'];
 
-    if (!szUsernameParam || szUsernameParam?.length <= 0 || typeof szUsernameParam !== 'string') {
+    if (!usernameParam || usernameParam?.length <= 0 || typeof usernameParam !== 'string') {
         return res.status(400).send({ status: 400, message: 'Invalid first query specified! Correct usage is /belike?name=\'yor name here\'&gender=\'m or f\' 🙄' });
     }
 
-    if (!szGenderParam || !AllowedGenderParam?.includes(szGenderParam?.toLowerCase())) {
+    if (!genderParam || !AllowedGenderParam?.includes(genderParam?.toLowerCase())) {
         return res.status(400).send({ status: 400, message: 'Invalid second query specified! Correct usage is /belike?name=\'yor name here\'&gender=\'m or f\' 🙄' });
     }
 
-    const ReturnFormat = req.query?.format;
+    const returnFormat = req.query?.format;
 
-    if (!ReturnFormat || !APIConstants.AcceptedReturnFormat.includes(ReturnFormat)) {
+    if (!returnFormat || !APIConstants.AcceptedreturnFormat.includes(returnFormat)) {
         return res.status(400).send({ status: 400, message: APIConstants.ReturnErrorType.ERROR_INVALID_RETURN_FORMAT });
     }
 
-    Jimp.read(encodeURI(`https://belikebill.ga/billgen-API.php?default=1&name=${decodeURI(szUsernameParam?.replace(/[^a-zA-Z0-9]/gi, ''))}&sex=${szGenderParam?.toLowerCase()}`)).then((image) => {
+    Jimp.read(encodeURI(`https://belikebill.ga/billgen-API.php?default=1&name=${decodeURIComponent(usernameParam?.replace(/[^a-zA-Z0-9]/gi, ''))}&sex=${genderParam?.toLowerCase()}`)).then((image) => {
         image.getBuffer(Jimp.AUTO, (err, buffer) => {
             if (err) {
                 return res.status(422).send({ status: 422, message: 'There was an error creating the meme \'Be Like Bill\' ⚠️' });
             }
 
-            return ReturnFormat === 'buffer'
+            return returnFormat === 'buffer'
                 ? res.status(200).send(buffer)
                 : res.status(200).send(Buffer.from(buffer, 'base64').toString('base64'));
         });
