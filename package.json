@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
-        "test": "mocha"
+        "test": "mocha",
+        "build": "npm install --build-from-source"
     },
     "dependencies": {
         "canvas": "^2.9.3",
