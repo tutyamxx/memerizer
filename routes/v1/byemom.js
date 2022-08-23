@@ -55,7 +55,7 @@ router.post('/byemom', (req, res) => {
                     .font(join(__dirname, '../../public/fonts/Helvetica.ttf'), 20)
                     .fill('#111111')
                     // eslint-disable-next-line no-useless-escape
-                    .draw([`rotate -25 text 70, 703 '${decodeURI(szSearchQuery?.replace(/'/g, '`')?.replace(/\"/g, '')?.trim())}'`])
+                    .draw(["rotate -25 text 70, 703 '" + decodeURI(szSearchQuery?.replace(/'/g, "`")?.replace(/\"/g, "")?.trim()) + "'"])
                     .toBuffer((err2, buffer2) => {
                         if (err2) {
                             return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Bye Mom` g ⚠️' });

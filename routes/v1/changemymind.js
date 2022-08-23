@@ -51,7 +51,7 @@ router.post('/changemymind', (req, res) => {
                 gm(buffer)
                     .font(join(__dirname, '../../public/fonts/Helvetica.ttf'), 14)
                     .fill('#111111')
-                    .draw([`rotate -7 text 195, 290 '${szText?.replace(/'/g, '`')?.replace(/["]/g, '')?.trim()}'`])
+                    .draw(["rotate -7 text 195, 290 '" + szText?.replace(/'/g, "`")?.replace(/["]/g, "")?.trim() + "'"])
                     .toBuffer((err2, buffer2) => {
                         if (err) {
                             return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Change My Mind` g ⚠️' });

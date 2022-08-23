@@ -32,7 +32,7 @@ router.get('/truth', (req, res) => {
     gm(join(__dirname, '../../public/images/truth/truth.jpg'))
         .font(join(__dirname, '../../public/fonts/MangaSpeak.ttf'), FontSize)
         .fill('#111111')
-        .draw([`text 0, 193 '${wrap(FormattedText, { width: (FormattedText?.length >= 50) ? 21 : 15 })}'`])
+        .draw(["text 0, 193 '" + wrap(FormattedText, { width: (FormattedText?.length >= 50) ? 21 : 15 }) + "'"])
         .toBuffer((err, buffer) => {
             if (err) {
                 return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Cold Hard Truth` ⚠️' });

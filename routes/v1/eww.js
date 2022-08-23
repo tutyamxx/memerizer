@@ -26,7 +26,7 @@ router.get('/eww', (req, res) => {
     gm(join(__dirname, '../../public/images/eww/eww.png'))
         .font(join(__dirname, '../../public/fonts/Helvetica.ttf'), FontSize)
         .fill('#111111')
-        .draw([`rotate -55 text -430, 480 '${szName?.replace(/'/g, '`')?.replace(/["]/g, '')?.trim()}'`])
+        .draw(["rotate -55 text -430, 480 '" + szName?.replace(/'/g, "`")?.replace(/["]/g, "")?.trim() + "'"])
         .toBuffer((err, buffer) => {
             if (err) {
                 return res.status(422).send({ status: 422, message: 'There was an error creating the meme `Eww I Stepped in Shit` g ⚠️' });
