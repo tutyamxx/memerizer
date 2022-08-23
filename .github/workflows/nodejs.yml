@@ -28,13 +28,9 @@ jobs:
     - name: Installing required packages, including GraphicsMagick and node Canvas
       run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
-            sudo apt-get install graphicsmagick -y
-            && sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
-            && npm install --build-from-source
+            sudo apt-get install graphicsmagick -y && sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y && npm install --build-from-source
           elif [ "$RUNNER_OS" == "macOS" ]; then
-            brew install graphicsmagick
-            && brew install pkg-config cairo pango libpng jpeg giflib librsvg
-            && npm install --build-from-source
+            brew install graphicsmagick && brew install pkg-config cairo pango libpng jpeg giflib librsvg && npm install --build-from-source
           else
             echo "$RUNNER_OS not supported"
             exit 1
