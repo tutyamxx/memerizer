@@ -1,23 +1,23 @@
 {
     "name": "memerizer",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": true,
     "scripts": {
-        "start": "node ./bin/www",
+        "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./bin/www",
         "test": "mocha",
         "build": "npm install --build-from-source"
     },
     "dependencies": {
-        "canvas": "^2.9.3",
+        "canvas": "^2.10.1",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "debug": "^4.3.1",
         "express": "^4.18.1",
         "express-fileupload": "^1.2.0",
-        "express-rate-limit": "^6.5.1",
+        "express-rate-limit": "^6.6.0",
         "glitch-canvas": "^1.1.10",
         "gm": "^1.23.1",
-        "helmet": "^5.1.1",
+        "helmet": "^6.0.0",
         "http-errors": "^2.0.0",
         "is-uri": "^1.2.4",
         "jimp": "^0.16.0",
