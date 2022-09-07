@@ -4,7 +4,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const https = require('https');
 const rateLimit = require('express-rate-limit');
 const favicon = require('serve-favicon');
 const fileUpload = require('express-fileupload');
@@ -57,8 +56,5 @@ app.use((req, res, next) => res.status(404).json({
 // --| Log the info on server startup
 // eslint-disable-next-line no-console
 app.listen(port, () => console.log(`🖥️  Server runs and is listening on port \x1b[34m${port}\x1b[0m.`));
-
-// --| Ping Heroku app and prevent it from sleeping every 15 minutes
-setInterval(() => https.get('https://memerizer.herokuapp.com/api/v1'), 900000);
 
 module.exports = app;
